@@ -2,7 +2,7 @@ var path = require('path');
 var utils = require('./utils');
 var config = require('../config');
 var vueLoaderConfig = require('./vue-loader.conf');
-
+//http://blog.csdn.net/hongchh/article/details/55113751     webpack配置信息说明
 var ifenv = require('./webpack.prod.conf')
 console.log(ifenv.env)
 function resolve(dir) {
@@ -12,8 +12,10 @@ var src = path.resolve(__dirname, '../src');
 var publicPath;
 if(ifenv === 'development') { //本地打包运行调用
     publicPath = config.dev.assetsPublicPath;
-}else if(process.env.NODE_ENV === 'production') {//打服务器包调用
+}else if(ifenv === 'production') {//打服务器包调用
     publicPath = config.build.assetsPublicPath
+}if(ifenv === 'production') {//打服务器包调用
+    publicPath = config.build.sitEnv
 }
 module.exports = {
     entry: {
@@ -66,7 +68,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader?cacheDirectory',
-                include: [resolve('src'), resolve('test'),resolve('static/bil')]
+                include: [resolve('src'), resolve('test'),resolve('static')]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

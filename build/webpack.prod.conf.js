@@ -16,6 +16,9 @@ if(env === 'production') { //根据npm run build:native中 NODE_ENV的值来判�
 }else if(env === 'development'){
     
     env = process.env.NODE_ENV === 'development' ? config.build.prodNative : config.build.sitEnv
+}if(env === 'sit'){
+    
+    env = config.build.sitEnv
 }
 // var env = process.env.NODE_ENV === 'production' ? config.build.prodEnv : config.build.sitEnv
 
