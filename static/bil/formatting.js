@@ -1,7 +1,4 @@
 
-//  ========== 
-//  = 日期、时间格式化 = 
-//  ========== 
 export const time1 = (data) =>  {
 //	console.log(data)
 	return new Date(data.time).Format("yyyy-MM-dd");
@@ -28,9 +25,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 }
 
 
-//  ========== 
-//  = table列表渲染 = 
-//  ========== 
+
 
 
 export const tableList = (datas,keys) =>{ //datas 请求获取的map集合  keys:table列表key值(需要接收的参数名)
