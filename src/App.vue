@@ -1,5 +1,5 @@
 <template>
-        <router-view>1111w21222221111113333333</router-view>
+        <router-view></router-view>
 
 
         
