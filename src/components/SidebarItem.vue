@@ -1,7 +1,7 @@
 <template>
 	<div class="sidebar">
 		<nav class="sidebar-nav">
-			<ul class="nav">
+			<ul id="sideNav" class="nav">
 				<template v-for="item in routes">
 					<router-link tag="li" class="nav-item nav-dropdown" v-if="!item.hidden&&item.children&&item.children.length>0" :to="item.path+''+item.children[0].path" disabled>
 
@@ -20,7 +20,7 @@
 						</ul>
 					</router-link>
 
-					<li class="nav-item" v-if="!item.hidden&&!item.children">
+					<li class="nav-item" v-if="!item.hidden&&!item.children"  @click="addActive">
 						<router-link :to="item.path" class="nav-link" exact>
 							<Icon :type="item.icon" color="white" />{{ item.name}} </router-link>
 					</li>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import {siblings} from 'static/bil/publicMethod'; 
+import {siblings,parentIndexOf} from 'static/bil/publicMethod'; 
 export default {
     name: "SidebarItem",
     props: {
@@ -49,14 +49,18 @@ export default {
 			e.preventDefault();
 			let opend = e.target.parentElement.parentElement.parentElement
 			opend.classList.add("open");
-			// console.log(e.target.parentElement.parentElement.parentElement);
-			// if(opend) {
-				// siblings(opend).classList.remove('open')
-				// console.log(siblings(opend));
-				for(let x in siblings(opend)) {
-					siblings(opend)[x].classList.remove('open')
+			
+			let sibArr = [];
+				if(opend != ''){
+					sibArr = siblings(e.target.parentElement)
+				}else{
+					sibArr = siblings(opend)
 				}
-			// }
+				
+				for(let x in sibArr) {
+					sibArr[x].classList.remove('open')
+				}
+
 			
         }
     },
