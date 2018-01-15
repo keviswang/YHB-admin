@@ -24,7 +24,11 @@ module.exports = {
     output: {
         path: config.build.assetsRoot,
         filename: '[name].js',
+<<<<<<< HEAD
         publicPath: publicPath
+=======
+        publicPath: process.env.NODE_ENV !== 'development' ?  config.build.assetsPublicPath: config.dev.assetsPublicPath
+>>>>>>> 47cd1a754a487057451bdfe96271a8f52beed0d2
     },
    
     resolve: {
@@ -68,7 +72,11 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader?cacheDirectory',
+<<<<<<< HEAD
                 include: [resolve('src'), resolve('test'),resolve('static')]
+=======
+                include: [resolve('src'), resolve('test')]
+>>>>>>> 47cd1a754a487057451bdfe96271a8f52beed0d2
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

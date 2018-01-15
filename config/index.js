@@ -5,7 +5,10 @@ module.exports = {
     build: {
         sitEnv: require('./sit.env'),
         prodEnv: require('./prod.env'),
+<<<<<<< HEAD
         prodNative: require('./dev.env'),//webpack.prod.conf
+=======
+>>>>>>> 47cd1a754a487057451bdfe96271a8f52beed0d2
         index: path.resolve(__dirname, '../dist/index.html'),
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: 'static',
