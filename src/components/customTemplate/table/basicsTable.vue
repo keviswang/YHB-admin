@@ -118,12 +118,7 @@ export default {
         pageSizeChange(pagesize) {
             this.baseC.putData.pageSize = pagesize;
             this.bignFunce(); //每页显示条数
-<<<<<<< HEAD
-//11
-=======
-
->>>>>>> master2
-
+            
             
         }
     }
