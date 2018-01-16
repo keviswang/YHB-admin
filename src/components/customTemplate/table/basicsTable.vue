@@ -78,7 +78,7 @@ export default {
                             this.baseC.tots = response.data.num;
                             resove(response.data.count);
                         }else{
-                            this.ifShowPage = false;//是否显示分页
+                            this.ifShowPage = false;
                         }
                     })
                     .catch(error => {
@@ -99,14 +99,13 @@ export default {
                 if (response.data) {
                     //关闭loading
                     this.loading = false;
-                   
+                    this.ifShowPage = true;//判断是否显示分页
                 }
                 datas = response.data;
                 for (let x in this.baseC.columns) {
                     keys.push(this.baseC.columns[x].key);
                 }
                 this.data1 = tableList(datas, keys);
-                this.ifShowPage = true;//是否显示分页
             });
         },
         onChangePage(page) {
@@ -119,10 +118,6 @@ export default {
         pageSizeChange(pagesize) {
             this.baseC.putData.pageSize = pagesize;
             this.bignFunce(); //每页显示条数
-
-
-
-            
         }
     }
 };
