@@ -121,7 +121,7 @@
 import navbar from './Navbar'
 
 export default {
-  name: 'header',
+  name: 'homeHeader',
   components: {
     navbar,
     

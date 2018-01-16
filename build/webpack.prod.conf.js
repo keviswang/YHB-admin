@@ -9,7 +9,18 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
-var env = process.env.NODE_ENV === 'production' ? config.build.prodEnv : config.build.sitEnv
+var env = process.env.NODE_ENV;
+if(env === 'production') { //根据npm run build:native中 NODE_ENV的值来判断
+    env = process.env.NODE_ENV === 'production' ? config.build.prodEnv : config.build.sitEnv
+    
+}else if(env === 'development'){
+    
+    env = process.env.NODE_ENV === 'development' ? config.build.prodNative : config.build.sitEnv
+}if(env === 'sit'){
+    
+    env = config.build.sitEnv
+}
+// var env = process.env.NODE_ENV === 'production' ? config.build.prodEnv : config.build.sitEnv
 
 function resolveApp(relativePath) {
     return path.resolve(relativePath);

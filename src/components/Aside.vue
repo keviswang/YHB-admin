@@ -56,7 +56,7 @@
 
 <script>
 export default {
-  name: 'aside'
+  name: 'homeAside'
 }
 </script>
 <style type="text/css">

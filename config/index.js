@@ -5,6 +5,7 @@ module.exports = {
     build: {
         sitEnv: require('./sit.env'),
         prodEnv: require('./prod.env'),
+        prodNative: require('./dev.env'),//webpack.prod.conf
         index: path.resolve(__dirname, '../dist/index.html'),
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: 'static',
@@ -25,7 +26,7 @@ module.exports = {
     },
     dev: {
         env: require('./dev.env'),
-        port: 9001,
+        port: 9002,
         autoOpenBrowser: true,
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
