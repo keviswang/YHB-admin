@@ -69,8 +69,8 @@ export default {
     // @import './mediaRes.scss';
     .inputList{
         
-        @include medias(xsm) {
-            background:#fff;
-        }
+        @include medias(xsm);
+        @include medias(xmd);
+         @include medias(xlg);
     }
 </style>
