@@ -9,7 +9,11 @@
 
 <template>
     <div class="basicsTable">
+
         <Table :loading="loading" :columns="baseC.columns" :data="data1"></Table>
+        <div v-if="ifShowPage" class="text_align margin_top">
+            <Page show-total :total="baseC.tots" @on-change='onChangePage' @on-page-size-change='pageSizeChange' placement="top" show-sizer show-elevator></Page>
+        </div>
     </div>
 </template>
 
@@ -25,7 +29,8 @@ export default {
     data() {
         return {
             loading: false,
-            data1: []
+            data1: [],
+            ifShowPage:false
         };
     },
     mounted() {
@@ -70,8 +75,10 @@ export default {
                     .then(response => {
                         if (response.data.count > 0) {
                             //当后台返回页数大于0时开始执行获取列表函数
-                            this.tots = response.data.num;
+                            this.baseC.tots = response.data.num;
                             resove(response.data.count);
+                        }else{
+                            this.ifShowPage = false;
                         }
                     })
                     .catch(error => {
@@ -92,6 +99,7 @@ export default {
                 if (response.data) {
                     //关闭loading
                     this.loading = false;
+                    this.ifShowPage = true;//判断是否显示分页
                 }
                 datas = response.data;
                 for (let x in this.baseC.columns) {
@@ -99,11 +107,27 @@ export default {
                 }
                 this.data1 = tableList(datas, keys);
             });
+        },
+        onChangePage(page) {
+            this.baseC.page = page;//选择当前页
+            let list = this.apiConfig.list; //父组件参数，用来查询api对应接口,list：名为list的接口;
+            this.backFunce(list).then(port => {
+                this.getList(port);
+            });
+        },
+        pageSizeChange(pagesize) {
+            this.baseC.putData.pageSize = pagesize;
+            this.bignFunce(); //每页显示条数
         }
     }
 };
 </script>
 
 <style scoped>
-
+    .text_align{
+		text-align: center;
+	}
+	.margin_top{
+		margin-top: 10px;
+	}
 </style>
