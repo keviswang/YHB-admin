@@ -20,8 +20,4 @@ export const parentIndexOf = (node,parent) =>{ //递归向上查找某父节点 
         if(n==parent){return n;} 
         if(n==document.documentElement){return -1;} //找不到目标父节点，防止死循环 
     } 
-<<<<<<< HEAD
 } 
-=======
-} 
->>>>>>> e606e02883ef985b389017e867105d83b5df6617

@@ -1,8 +1,5 @@
 <template>
     <div>
-<<<<<<< HEAD
-        
-=======
         <Row>
             <Col :xs="24" :sm="12" :md="6" v-for="x in tableArr" :key="x.id"   class="inputList">
             <DatePicker class="ww" v-if="x.kind == 'date'" :id="x.id" :type="x.type" :options="options1" :placeholder="x.placeholder" style="width: 90%"></DatePicker>
@@ -11,20 +8,10 @@
             </Input>
             </Col>
         </Row>
->>>>>>> e606e02883ef985b389017e867105d83b5df6617
     </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-    export default {
-        name:''
-    }
-</script>
-
-<style scoped>
-
-=======
 // import 'static/css/scss/media-queries.scss'
 export default {
     name: "",
@@ -86,5 +73,4 @@ export default {
             background:#fff;
         }
     }
->>>>>>> e606e02883ef985b389017e867105d83b5df6617
 </style>

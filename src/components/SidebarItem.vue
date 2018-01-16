@@ -1,11 +1,7 @@
 <template>
 	<div class="sidebar">
 		<nav class="sidebar-nav">
-<<<<<<< HEAD
-			<ul id="sideNav" class="nav">
-=======
 			<ul class="nav">
->>>>>>> e606e02883ef985b389017e867105d83b5df6617
 				<template v-for="item in routes">
 					<router-link tag="li" class="nav-item nav-dropdown" v-if="!item.hidden&&item.children&&item.children.length>0" :to="item.path+''+item.children[0].path" disabled>
 
@@ -19,11 +15,7 @@
 
 								<router-link :to="item.path+'/'+child.path" class="nav-link" v-else="!child.children">
 									<Icon :type="child.icon" color="white" /> {{ child.name}} </router-link>
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> e606e02883ef985b389017e867105d83b5df6617
 							</li>
 						</ul>
 					</router-link>
@@ -73,11 +65,7 @@ export default {
         }
     },
     mounted() {
-<<<<<<< HEAD
-		// console.log(this.routes)
-=======
 		// console.log(this.routes+'1')
->>>>>>> e606e02883ef985b389017e867105d83b5df6617
 		let opend = document.getElementsByClassName('router-link-exact-active open')[0];
 		// console.log(opend.parentElement.parentElement.parentElement.classList.add('open'));
 		if(opend) {

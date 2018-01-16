@@ -9,15 +9,11 @@
 
 <template>
     <div class="basicsTable">
-<<<<<<< HEAD
-        <Table :loading="loading" :columns="baseC.columns" :data="data1"></Table>
-=======
 
         <Table :loading="loading" :columns="baseC.columns" :data="data1"></Table>
         <div v-if="ifShowPage" class="text_align margin_top">
             <Page show-total :total="baseC.tots" @on-change='onChangePage' @on-page-size-change='pageSizeChange' placement="top" show-sizer show-elevator></Page>
         </div>
->>>>>>> e606e02883ef985b389017e867105d83b5df6617
     </div>
 </template>
 
@@ -33,12 +29,8 @@ export default {
     data() {
         return {
             loading: false,
-<<<<<<< HEAD
-            data1: []
-=======
             data1: [],
             ifShowPage:false
->>>>>>> e606e02883ef985b389017e867105d83b5df6617
         };
     },
     mounted() {
@@ -83,15 +75,10 @@ export default {
                     .then(response => {
                         if (response.data.count > 0) {
                             //当后台返回页数大于0时开始执行获取列表函数
-<<<<<<< HEAD
-                            this.tots = response.data.num;
-                            resove(response.data.count);
-=======
                             this.baseC.tots = response.data.num;
                             resove(response.data.count);
                         }else{
                             this.ifShowPage = false;
->>>>>>> e606e02883ef985b389017e867105d83b5df6617
                         }
                     })
                     .catch(error => {
@@ -112,10 +99,7 @@ export default {
                 if (response.data) {
                     //关闭loading
                     this.loading = false;
-<<<<<<< HEAD
-=======
                     this.ifShowPage = true;//判断是否显示分页
->>>>>>> e606e02883ef985b389017e867105d83b5df6617
                 }
                 datas = response.data;
                 for (let x in this.baseC.columns) {
@@ -123,8 +107,6 @@ export default {
                 }
                 this.data1 = tableList(datas, keys);
             });
-<<<<<<< HEAD
-=======
         },
         onChangePage(page) {
             this.baseC.page = page;//选择当前页
@@ -136,21 +118,16 @@ export default {
         pageSizeChange(pagesize) {
             this.baseC.putData.pageSize = pagesize;
             this.bignFunce(); //每页显示条数
->>>>>>> e606e02883ef985b389017e867105d83b5df6617
         }
     }
 };
 </script>
 
 <style scoped>
-<<<<<<< HEAD
-
-=======
     .text_align{
 		text-align: center;
 	}
 	.margin_top{
 		margin-top: 10px;
 	}
->>>>>>> e606e02883ef985b389017e867105d83b5df6617
 </style>
