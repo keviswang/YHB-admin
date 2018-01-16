@@ -65,7 +65,7 @@ export default {
         }
     },
     mounted() {
-		// console.log(this.routes)
+		// console.log(this.routes+'1')
 		let opend = document.getElementsByClassName('router-link-exact-active open')[0];
 		// console.log(opend.parentElement.parentElement.parentElement.classList.add('open'));
 		if(opend) {
