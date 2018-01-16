@@ -118,9 +118,6 @@ export default {
         pageSizeChange(pagesize) {
             this.baseC.putData.pageSize = pagesize;
             this.bignFunce(); //每页显示条数
-
-
-            
         }
     }
 };
