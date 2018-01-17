@@ -1,9 +1,9 @@
 <template>
     <div>
         <Row :gutter="26">
-            <Col v-for="x in tableArr" :xs="x.colSize.xs" :sm="x.colSize.sm" :lg="x.colSize.lg" :key="x.id" class="inputList">
+            <Col v-for="(x,index) in tableArr" :xs="x.colSize.xs" :sm="x.colSize.sm" :lg="x.colSize.lg" :key="x.id" class="inputList">
             <DatePicker  class="timeinput" v-if="x.kind == 'date'" :id="x.id" :type="x.type" :options="options1" :placeholder="x.placeholder" style="width: 100%;height:100%;"></DatePicker>
-            <Input v-if="x.kind == 'textInput'" :id="x.id" :placeholder="x.placeholder" style="width: 100%" @on-change="met">
+            <Input v-model="tableArr[index].val" v-if="x.kind == 'textInput'" :id="x.id" :placeholder="x.placeholder" style="width: 100%" @on-enter="met(x,index)">
             <span slot="prepend">{{x.name}}</span>
             </Input>
             </Col>
@@ -62,15 +62,17 @@ export default {
         
     },
     methods: {
-        met() {
-            console.log(this.tableArr);
+        met(x,index) {
+            console.log(x.val);
             for(let x in this.tableArr) {
                 
             }
         }
        
     },
-    computed: {}
+    computed: {
+
+    }
 };
 </script>
 

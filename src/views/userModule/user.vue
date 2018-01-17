@@ -41,10 +41,10 @@ export default {
             },
             //向子组件传值 inputList配置
             inputs: [
-				{kind:'date',id:'star',name:'开始时间:',placeholder:"开始时间",type:'date',colSize:{xs:24,sm:12,md:'',lg:6}},
-				{kind:'date',id:'end',name:'结束时间:',placeholder:"结束时间",type:'date',colSize:{xs:24,sm:12,md:'',lg:6}},
-				{kind:'textInput',id:'userName',name:'用户名称:',placeholder:"请输入用户名称",colSize:{xs:24,sm:12,md:'',lg:6}},
-				{kind:'textInput',id:'phone',name:'手机号码:',placeholder:"请输入手机号码",colSize:{xs:24,sm:12,md:'',lg:6}},
+				{kind:'date',id:'star',name:'开始时间:',placeholder:"开始时间",type:'date',colSize:{xs:24,sm:12,md:'',lg:6},val:''},
+				{kind:'date',id:'end',name:'结束时间:',placeholder:"结束时间",type:'date',colSize:{xs:24,sm:12,md:'',lg:6},val:''},
+				{kind:'textInput',id:'userName',name:'用户名称:',placeholder:"请输入用户名称",colSize:{xs:24,sm:12,md:'',lg:6},val:''},
+				{kind:'textInput',id:'phone',name:'手机号码:',placeholder:"请输入手机号码",colSize:{xs:24,sm:12,md:'',lg:6},val:''},
             ]
            
         };
