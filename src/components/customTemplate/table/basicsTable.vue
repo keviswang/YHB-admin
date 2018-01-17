@@ -12,7 +12,10 @@
 
         <Table :loading="loading" :columns="baseC.columns" :data="data1"></Table>
         <div v-if="ifShowPage" class="text_align margin_top">
-            <Page show-total :total="baseC.tots" @on-change='onChangePage' @on-page-size-change='pageSizeChange' placement="top" show-sizer show-elevator></Page>
+            <!-- 根据屏幕大小渲染page相应组件 -->
+            <Page v-if="showSize < 768" show-total :total="baseC.tots" @on-change='onChangePage' @on-page-size-change='pageSizeChange' simple show-sizer show-elevator></Page>
+            <Page v-if="showSize >= 768&&showSize < 1200"  size="small" show-total :total="baseC.tots" @on-change='onChangePage' @on-page-size-change='pageSizeChange' :pageSizeOpts="pageSizeOpts" placement="top" show-sizer show-elevator></Page>
+            <Page v-if="showSize > 1200" show-total :total="baseC.tots" @on-change='onChangePage' @on-page-size-change='pageSizeChange' :pageSizeOpts="pageSizeOpts" placement="top" show-sizer show-elevator></Page>
         </div>
     </div>
 </template>
@@ -30,11 +33,16 @@ export default {
         return {
             loading: false,
             data1: [],
-            ifShowPage:false
+            ifShowPage:false,
+            pageSizeOpts:[10,20,30,40],
+            showSize: document.documentElement.clientWidth
         };
     },
     mounted() {
         this.bignFunce(); //挂载后立即执行bignFunce()
+        window.onresize = () => {
+            this.showSize = document.documentElement.clientWidth;
+        }
     },
     methods: {
         bignFunce() {

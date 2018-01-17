@@ -15,12 +15,12 @@
 
 								<router-link :to="item.path+'/'+child.path" class="nav-link" v-else="!child.children">
 									<Icon :type="child.icon" color="white" /> {{ child.name}} </router-link>
-	
+
 							</li>
 						</ul>
 					</router-link>
 
-					<li class="nav-item" v-if="!item.hidden&&!item.children"  @click="addActive">
+					<li class="nav-item" v-if="!item.hidden&&!item.children" @click="addActive">
 						<router-link :to="item.path" class="nav-link" exact>
 							<Icon :type="item.icon" color="white" />{{ item.name}} </router-link>
 					</li>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import {siblings,parentIndexOf} from 'static/bil/publicMethod'; 
+import { siblings, parentIndexOf } from "static/bil/publicMethod";
 export default {
     name: "SidebarItem",
     props: {
@@ -46,33 +46,30 @@ export default {
             e.target.parentElement.classList.toggle("open");
         },
         addActive(e) {
-			e.preventDefault();
-			let opend = e.target.parentElement.parentElement.parentElement
-			opend.classList.add("open");
-			
-			let sibArr = [];
-				if(opend != ''){
-					sibArr = siblings(e.target.parentElement)
-				}else{
-					sibArr = siblings(opend)
-				}
-				
-				for(let x in sibArr) {
-					sibArr[x].classList.remove('open')
-				}
+            e.preventDefault();
+            let opend = e.target.parentElement.parentElement.parentElement;
+            opend.classList.add("open");
 
-			
+            let sibArr = [];
+            if (siblings(opend) == "") {
+                sibArr = siblings(e.target.parentElement);
+            } else {
+                sibArr = siblings(opend);
+            }
+            for (let x in sibArr) {
+                sibArr[x].classList.remove("open");
+            }
         }
     },
     mounted() {
-		// console.log(this.routes+'1')
-		let opend = document.getElementsByClassName('router-link-exact-active open')[0];
-		// console.log(opend.parentElement.parentElement.parentElement.classList.add('open'));
-		if(opend) {
-			opend.parentElement.parentElement.parentElement.classList.add('open');
-		}
-		
-
+        let opend = document.getElementsByClassName(
+            "router-link-exact-active open"
+        )[0];
+        if (opend) {
+            opend.parentElement.parentElement.parentElement.classList.add(
+                "open"
+            );
+        }
     }
 };
 </script>
@@ -85,7 +82,15 @@ export default {
     display: block;
     text-indent: 10px;
 }
-.navbar .sidebar .nav .nav-item .active.dropdown-toggle, .sidebar .nav .nav-item .nav-link.active, .sidebar .nav .nav-item .navbar .active.dropdown-toggle{background: #063242;}
-.navbar .sidebar .nav .nav-item .dropdown-toggle:hover, .sidebar .nav .nav-item .nav-link:hover, .sidebar .nav .nav-item .navbar .dropdown-toggle:hover{background: #42778a!important;}
+.navbar .sidebar .nav .nav-item .active.dropdown-toggle,
+.sidebar .nav .nav-item .nav-link.active,
+.sidebar .nav .nav-item .navbar .active.dropdown-toggle {
+    background: #063242;
+}
+.navbar .sidebar .nav .nav-item .dropdown-toggle:hover,
+.sidebar .nav .nav-item .nav-link:hover,
+.sidebar .nav .nav-item .navbar .dropdown-toggle:hover {
+    background: #42778a !important;
+}
 </style>
 

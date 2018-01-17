@@ -1,9 +1,9 @@
 <template>
     <div>
-        <Row>
-            <Col :xs="24" :sm="12" :md="6" v-for="x in tableArr" :key="x.id"   class="inputList">
-            <DatePicker class="ww" v-if="x.kind == 'date'" :id="x.id" :type="x.type" :options="options1" :placeholder="x.placeholder" style="width: 90%"></DatePicker>
-            <Input v-if="x.kind == 'textInput'" :id="x.id" :placeholder="x.placeholder" style="width: 90%">
+        <Row :gutter="26">
+            <Col v-for="x in tableArr" :xs="x.colSize.xs" :sm="x.colSize.sm" :lg="x.colSize.lg" :key="x.id" class="inputList">
+            <DatePicker  class="timeinput" v-if="x.kind == 'date'" :id="x.id" :type="x.type" :options="options1" :placeholder="x.placeholder" style="width: 100%;height:100%;"></DatePicker>
+            <Input v-if="x.kind == 'textInput'" :id="x.id" :placeholder="x.placeholder" style="width: 100%" @on-change="met">
             <span slot="prepend">{{x.name}}</span>
             </Input>
             </Col>
@@ -20,7 +20,7 @@ export default {
     },
     data() {
         return {
-            value1: "",
+            value: "",
             options1: {
                 shortcuts: [
                     {
@@ -59,18 +59,29 @@ export default {
         };
     },
     mounted() {
-        // console.log(this.tableArr);
-    }
-}
+        
+    },
+    methods: {
+        met() {
+            console.log(this.tableArr);
+            for(let x in this.tableArr) {
+                
+            }
+        }
+       
+    },
+    computed: {}
+};
 </script>
 
 <style lang="scss" scoped>
-    @import "static/css/scss/media-queries";
-    // @import './mediaRes.scss';
-    .inputList{
-        
-        @include medias(xsm);
-        @include medias(xmd);
-         @include medias(xlg);
+@import "static/css/scss/media-queries";
+.inputList {
+    text-align: center;
+    .ivu-input-group {
+        margin: 0 auto;
     }
+    @include medias();
+    
+}
 </style>

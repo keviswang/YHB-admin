@@ -1,19 +1,23 @@
 <template>
     <div>
-        <search-top :tableArr="tables"></search-top>
+        <search-top :tableArr="inputs"></search-top>
         <basics-table :baseC="baseConfig" :apiConfig="apiName"></basics-table>
     </div>
 </template>
 
 <script>
 // import { userList, userCount } from "api/list/allApi.js";
-import SearchTop from "components/customTemplate/search/InputList";
-import BasicsTable from "components/customTemplate/table/BasicsTable";
+import SearchTop from "components/customTemplate/search/InputList";//input搜索框组件
+import BasicsTable from "components/customTemplate/table/BasicsTable";//table+page组件
 export default {
     name: "user",
     components: {SearchTop, BasicsTable },
     data() {
         return {
+             starVal:'',
+            endVal:'',
+            userNameVal:'',
+            phoneVal:'',
             baseConfig: {
                 //向子组件传值 basicsTable配置
                 loading: false,
@@ -35,13 +39,14 @@ export default {
                 count: "count",
                 list: "list"
             },
-            //向子组件传值 search-top配置
-            tables: [
-				{kind:'date',id:'star',placeholder:"开始时间",type:'date'},
-				{kind:'date',id:'end',placeholder:"结束时间",type:'date'},
-				{kind:'textInput',name:'用户名称:',id:'userName',placeholder:"请输入用户名称"},
-				{kind:'textInput',name:'手机号码:',id:'phone',placeholder:"请输入手机号码"},
-			]
+            //向子组件传值 inputList配置
+            inputs: [
+				{kind:'date',id:'star',name:'开始时间:',placeholder:"开始时间",type:'date',colSize:{xs:24,sm:12,md:'',lg:6}},
+				{kind:'date',id:'end',name:'结束时间:',placeholder:"结束时间",type:'date',colSize:{xs:24,sm:12,md:'',lg:6}},
+				{kind:'textInput',id:'userName',name:'用户名称:',placeholder:"请输入用户名称",colSize:{xs:24,sm:12,md:'',lg:6}},
+				{kind:'textInput',id:'phone',name:'手机号码:',placeholder:"请输入手机号码",colSize:{xs:24,sm:12,md:'',lg:6}},
+            ]
+           
         };
     }
 };
