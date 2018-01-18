@@ -9,7 +9,7 @@
 
 <template>
     <div class="basicsTable">
-
+        <!-- {{table_serchData}} -->
         <Table :loading="loading" :columns="baseC.columns" :data="data1"></Table>
         <div v-if="ifShowPage" class="text_align margin_top">
             <!-- 根据屏幕大小渲染page相应组件 -->
@@ -23,11 +23,20 @@
 <script>
 import api from "api/user/userList.js";
 import { tableList } from "static/bil/formatting";
+import { mapGetters } from 'vuex'
 export default {
     name: "basicsTable",
     props: {
         baseC: Object,
         apiConfig: Object
+    },
+    computed: {
+        ...mapGetters([ //获取getters的table_serchData方法返回的值
+          'table_serchData'
+        ])
+    },
+    watch: {
+         'table_serchData':'bignFunce'
     },
     data() {
         return {
@@ -35,10 +44,12 @@ export default {
             data1: [],
             ifShowPage:false,
             pageSizeOpts:[10,20,30,40],
-            showSize: document.documentElement.clientWidth
+            showSize: document.documentElement.clientWidth,
+            serchData:''
         };
     },
     mounted() {
+        // console.log(this.serchData);
         this.bignFunce(); //挂载后立即执行bignFunce()
         window.onresize = () => {
             this.showSize = document.documentElement.clientWidth;
@@ -46,6 +57,7 @@ export default {
     },
     methods: {
         bignFunce() {
+            console.log(this.table_serchData);
             let count = this.apiConfig.count; //父组件参数，用来查询api对应接口,count：名为count的接口;
             let list = this.apiConfig.list; //父组件参数，用来查询api对应接口,list：名为list的接口;
             this.backFunce(count).then(port => {

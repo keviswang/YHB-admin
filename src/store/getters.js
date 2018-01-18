@@ -14,5 +14,8 @@ const getters = {
   permission_routers: state => state.permission.routers,
   addRouters: state => state.permission.addRouters,
   siderbar_routers:state => state.permission.siderbar_routers,
+  table_serchData: state => {
+      return state.table.putData
+    }
 };
 export default getters
