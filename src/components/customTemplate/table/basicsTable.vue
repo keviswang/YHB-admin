@@ -36,7 +36,7 @@ export default {
         ])
     },
     watch: {
-         'table_serchData':'bignFunce'
+         'table_serchData':'bignFunce'//监听table_serchData发生变化执行bignFunce方法
     },
     data() {
         return {
