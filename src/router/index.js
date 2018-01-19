@@ -45,6 +45,7 @@ export const asyncRouterMap = [
     name: '首页',
     component: Full,
     hidden:false,
+    icon:'android-cloud',
     children: [
      {path: '/dashboard',name: 'Dashboard',icon:'speedometer',component: _import('Dashboard')},
      {path: '/introduction',name: '介绍',icon:'thumbsup',component: _import('Introduction')},
@@ -98,6 +99,7 @@ export const asyncRouterMap = [
     name: '首页2',
     component: Full2,
     hidden:false,
+    icon:'stats-bars',
     children: [
      {path: '/home1/dashboard',name: 'Dashboard2',icon:'speedometer',component: _import('Dashboard2')},
      {path: '/home1/introduction',name: '介绍2',icon:'thumbsup',component: _import('Introduction')},

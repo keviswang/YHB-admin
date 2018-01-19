@@ -23,6 +23,7 @@ router.beforeEach((to, from, next) => {
     } else {
       if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
       	console.log(store.getters.roles.length)
+      	console.log('11111111111')
         store.dispatch('GetInfo').then(res => { // 拉取user_info
           const roles = res.data.role
 					console.log(res)
@@ -31,7 +32,7 @@ router.beforeEach((to, from, next) => {
             router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
             next({ ...to }) // hack方法 确保addRoutes已完成
           })
-          
+          store.dispatch('headerRouters')//获取头部导航路由表
         }).catch(() => {
         	console.log('登出')
           store.dispatch('FedLogOut').then(() => {
@@ -40,8 +41,11 @@ router.beforeEach((to, from, next) => {
           })
         })
       } else {
+      	console.log('22222222222')
+        
         console.log('now')
         store.dispatch('getNowRoutes', to);
+        
 
         if (hasPermission(store.getters.roles, to.meta.role)) {
           next()//

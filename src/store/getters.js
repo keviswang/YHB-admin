@@ -13,6 +13,7 @@ const getters = {
   setting: state => state.user.setting,
   permission_routers: state => state.permission.routers,
   addRouters: state => state.permission.addRouters,
+  header_Routers:state => state.permission.header_Routers,
   siderbar_routers:state => state.permission.siderbar_routers,
   table_serchData: state => {
       return state.table.putData

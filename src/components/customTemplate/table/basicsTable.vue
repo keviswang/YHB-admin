@@ -23,7 +23,7 @@
 <script>
 import api from "api/user/userList.js";
 import { tableList } from "static/bil/formatting";
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
 export default {
     name: "basicsTable",
     props: {

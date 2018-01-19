@@ -22,6 +22,9 @@ export default {
       e.preventDefault()
       e.target.parentElement.classList.toggle('open')
     }
+  },
+  mounted() {
+    // console.log(this.siderbar_routers);
   }
 }
 </script>
