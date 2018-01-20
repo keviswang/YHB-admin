@@ -8,7 +8,7 @@
 			</li>
 
 		</ul>
-		<Menu mode="horizontal" class="headerZ" :theme="theme1" style="	" active-name="1">
+		<!-- <Menu mode="horizontal" class="headerZ" :theme="theme1" style=" color:#fff;	" active-name="1" v-for="(x,index) in header_Routers">
         <MenuItem name="1">
             内容管理
         </MenuItem>
@@ -19,15 +19,15 @@
         <MenuItem name="4">
             综合设置
         </MenuItem>
-    </Menu>
+    </Menu> -->
 
-		<ul class="nav navbar-nav d-md-down-none">
+		<ul class="nav navbar-nav d-md-down-none topRouters">
 
-			<li class="nav-item header-item" v-for="(x,index) in header_Routers">
+			<li class="nav-item header-item " v-for="(x,index) in header_Routers" @click="active(x,index)">
 
-				<router-link tag="div" :to='x.path' style="height:55px;" class="nav-link">
+				<router-link tag="div" :to='x.path' style="" class="nav-link">
 					<p>
-						<Icon :type="x.icon" size='30' color="#2d8cf0"></Icon>
+						<!-- <Icon :type="x.icon" size='30' color="#2d8cf0"></Icon> -->
 					</p>
 					<p style="color:white"> {{x.name}} </p>
 				</router-link>
@@ -189,42 +189,48 @@ export default {
         asideToggle(e) {
             e.preventDefault();
             document.body.classList.toggle("aside-menu-hidden");
-        }
+		},
+		active(x,index) {
+			console.log(document.getElementsByClassName('header-item')[index]);
+			
+		}
 	},
 	mounted() {
-		console.log(this.header_Routers);
+		// console.log(this.header_Routers);
 	}
 };
 </script>
 
-<style type="text/css" scoped>
+<style lang="scss" scoped>
 .dropdown-itemp {
     text-align: left;
     font-size: 15px;
     padding: 10px;
 }
+
 .header-item .ivu-dropdown-item {
     padding: 15px;
 }
+.topRouters{
+	position: absolute;
+	right: 11.0625rem;
+}
+// .nav-link{
+// 	width: 3.4375rem;
+// }
 .header-item {
-    width: 130px;
+	width: 6.25rem;
+	.nav-link{
+		line-height: 3.4375rem;
+	}
     /*background-color: #20a8d8;*/
     /*background-color: white;*/
-
+	
     height: 55px;
 }
-.header-item a {
-    color: white !important;
+ a {
+    color: rgb(218, 212, 212) !important;
 }
-.headerZ{
-	/* color:white; */
-	background: transparent;height:100%;
-}
-.ivu-menu-light.ivu-menu-horizontal .ivu-menu-item-active, .ivu-menu-light.ivu-menu-horizontal .ivu-menu-item:hover, .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu-active, .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu:hover{
-	border-bottom: 4px solid #2d8cf0;
-	color: white;
-}
-.ivu-menu-light.ivu-menu-horizontal , .ivu-menu-light.ivu-menu-horizontal .ivu-menu-item:hover, .ivu-menu-light.ivu-menu-horizontal , .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu{
-	color: white;
-}
+
+
 </style>

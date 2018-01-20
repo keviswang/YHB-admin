@@ -60,7 +60,10 @@ const permission = {
   },
   mutations: {
     SET_ROUTERS: (state, routers) => {
-      state.addRouters = routers;
+      if(state.addRouters == '') {
+        state.addRouters = routers;
+      }
+     
       state.routers = constantRouterMap.concat(routers);
       // state.routers.forEach(function(e){
       //     if(e.name==="首页"){
@@ -75,7 +78,7 @@ const permission = {
 
 
       // 递归访问 accessedRouters，找到包含to 的那个路由对象，设置给siderbar_routers
-      console.log(state.addRouters)
+      // console.log(state.addRouters)
 
       state.addRouters.forEach(e => {
         if (e.children && e.children.length) {
@@ -88,8 +91,12 @@ const permission = {
 
     },
     SET_HEADER_ROUTERS: (state) => {//循环便利出头部导航列表
-      asyncRouterMap.pop();//先删除   pop删除数组最后一个元素并返回被删除的元素;
-      state.header_Routers = asyncRouterMap;//此时数组已经被删除最后一个元素;
+      
+      if(state.header_Routers =='') {
+        asyncRouterMap.pop();//先删除   pop删除数组最后一个元素并返回被删除的元素;
+        state.header_Routers = asyncRouterMap;//此时数组已经被删除最后一个元素;
+      }
+      
     }
 
   },

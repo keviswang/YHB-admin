@@ -106,6 +106,18 @@ export const asyncRouterMap = [
     
     ]
   },
+  {
+    path: '/home2',
+    redirect: '/dashboard2',
+    name: '首页3',
+    component: Full,
+    hidden:false,
+    icon:'stats-bars',
+    children: [
+      {path: '/dashboard2',name: 'Dashboard02',icon:'speedometer',component: _import('Dashboard2')},
+      {path: '/introduction',name: '介绍1',icon:'thumbsup',component: _import('Introduction')},
+    ]
+  },
 
 
   { path: '*', redirect: '/pages/404', hidden: true }

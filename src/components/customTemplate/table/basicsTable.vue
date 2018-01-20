@@ -57,7 +57,7 @@ export default {
     },
     methods: {
         bignFunce() {
-            console.log(this.table_serchData);
+            // console.log(this.table_serchData);
             let count = this.apiConfig.count; //父组件参数，用来查询api对应接口,count：名为count的接口;
             let list = this.apiConfig.list; //父组件参数，用来查询api对应接口,list：名为list的接口;
             this.backFunce(count).then(port => {

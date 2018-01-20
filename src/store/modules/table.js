@@ -4,12 +4,14 @@ const table = {
     },
     mutations: {
         SET_SERCHDATA:(state,data) => {
-            state.putData = data
+            if( state.putData == '') {
+                state.putData = data
+            }
+            
         }
     },
     action: {
 
     }
 }
-console.log(table.state.putData);
 export default table;

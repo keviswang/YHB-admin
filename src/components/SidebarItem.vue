@@ -82,15 +82,15 @@ export default {
     display: block;
     text-indent: 10px;
 }
-.navbar .sidebar .nav .nav-item .active.dropdown-toggle,
-.sidebar .nav .nav-item .nav-link.active,
-.sidebar .nav .nav-item .navbar .active.dropdown-toggle {
-    background: #063242;
-}
-.navbar .sidebar .nav .nav-item .dropdown-toggle:hover,
-.sidebar .nav .nav-item .nav-link:hover,
-.sidebar .nav .nav-item .navbar .dropdown-toggle:hover {
-    background: #42778a !important;
-}
+// .navbar .sidebar .nav .nav-item .active.dropdown-toggle,
+// .sidebar .nav .nav-item .nav-link.active,
+// .sidebar .nav .nav-item .navbar .active.dropdown-toggle {
+//     background: #063242;
+// }
+// .navbar .sidebar .nav .nav-item .dropdown-toggle:hover,
+// .sidebar .nav .nav-item .nav-link:hover,
+// .sidebar .nav .nav-item .navbar .dropdown-toggle:hover {
+//     background: #42778a !important;
+// }
 </style>
 

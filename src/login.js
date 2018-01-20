@@ -6,7 +6,7 @@ import 'nprogress/nprogress.css'// Progress 进度条样式
 
 // permissiom judge
 function hasPermission(roles, permissionRoles) {
-	console.log(roles,permissionRoles)
+	// console.log(roles,permissionRoles)
   if (roles.indexOf('admin') >= 0) return true // admin权限 直接通过
   if (!permissionRoles) return true
   return roles.some(role => permissionRoles.indexOf(role) >= 0)
@@ -21,18 +21,20 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/login') {
       next({ path: '/' })
     } else {
-      if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
-      	console.log(store.getters.roles.length)
-      	console.log('11111111111')
+      if (store.getters.roles.length === 0 ) { // 判断当前用户是否已拉取完user_info信息
         store.dispatch('GetInfo').then(res => { // 拉取user_info
           const roles = res.data.role
-					console.log(res)
-					console.log(store.getters.roles.length)
-          store.dispatch('GenerateRoutes', { roles }).then(() => { // 生成可访问的路由表
-            router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
-            next({ ...to }) // hack方法 确保addRoutes已完成
-          })
+          // console.log(store.getters.roles)
+          if(store.getters.addRouters == ''){
+            store.dispatch('GenerateRoutes', { roles }).then(() => { // 生成可访问的路由表
+              router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
+              
+            })
+          }
           store.dispatch('headerRouters')//获取头部导航路由表
+          next({ ...to }) // hack方法 确保addRoutes已完成
+          
+          
         }).catch(() => {
         	console.log('登出')
           store.dispatch('FedLogOut').then(() => {
@@ -40,11 +42,9 @@ router.beforeEach((to, from, next) => {
             next({ path: '/login' })
           })
         })
-      } else {
-      	console.log('22222222222')
-        
+      }else{
         console.log('now')
-        store.dispatch('getNowRoutes', to);
+          store.dispatch('getNowRoutes', to);
         
 
         if (hasPermission(store.getters.roles, to.meta.role)) {
